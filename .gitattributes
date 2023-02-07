@@ -1,0 +1,2 @@
+world_sql_content.sqlite filter=lfs diff=lfs merge=lfs -text
+*.sqlite filter=lfs diff=lfs merge=lfs -text
