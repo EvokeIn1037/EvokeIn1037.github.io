@@ -1,9 +1,30 @@
 <!DOCTYPE html>
 <html>
 
+<head>
+    <link rel="stylesheet" href="editor.md/css/editormd.preview.css" />
+</head>
+
 <body>
-    <h1>Hello World</h1>
-    <p>I'm hosted with GitHub Pages.</p>
+    <div id="test-markdown-view">
+        <!-- Server-side output Markdown text -->
+        <textarea style="display:none;"></textarea>
+    </div>
+    <script src="js/jquery.min.js"></script>
+    <script src="editor.md/editormd.js"></script>
+    <script src="editor.md/lib/marked.min.js"></script>
+    <script src="editor.md/lib/prettify.min.js"></script>
+    <script type="text/javascript">
+        $(function () {
+            var testView = editormd.markdownToHTML("test-markdown-view", {
+                markdown: "\n```c++\nusing namespace std;\nint main()\n{\n    cout << \"Hello World!\" << endl;\n    return 0;\n}\n```", // Also, you can dynamic set Markdown text
+                width: "1920px",
+                height: "100%",
+                // htmlDecode : true,  // Enable / disable HTML tag encode.
+                // htmlDecode : "style,script,iframe",  // Note: If enabled, you should filter some dangerous HTML tags for website security.
+            });
+        });
+    </script>
 </body>
 
 </html>

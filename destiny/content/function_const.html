@@ -14,6 +14,7 @@
     <link rel="stylesheet" href="../css/nprogress.css" />
     <link rel="stylesheet" href="../css/blog.css" />
     <link rel="shortcut icon" href="../../destiny2/img/Icon9.ico" />
+    <link rel="stylesheet" href="../../editor.md/css/editormd.preview.cs" />
 </head>
 
 <body>
@@ -81,6 +82,14 @@
                                 <p>
                                     总结而言，成员函数后面加const表示函数不可以修改class的成员。
                                 </p>
+                                <br />
+                                <p>
+                                    示例如下，只读函数。
+                                </p>
+                                <div id="test-markdown-view">
+                                    <!-- Server-side output Markdown text -->
+                                    <textarea style="display:none;"></textarea>
+                                </div>
                                 <div class="copyright mt20">
                                     <!-- <p class="f-toe fc-black">
                                         非特殊说明，本文版权归 燕十三 所有，转载请注明出处.
@@ -163,6 +172,21 @@
         window.onload = function () {
             NProgress.done();
         };
+    </script>
+    <script src="../js/jquery.min.js"></script>
+    <script src="../../editor.md/editormd.js"></script>
+    <script src="../../editor.md/lib/marked.min.js"></script>
+    <script src="../../editor.md/lib/prettify.min.js"></script>
+    <script type="text/javascript">
+        $(function () {
+            var testView = editormd.markdownToHTML("test-markdown-view", {
+                markdown: "\n```c++{.line-numbers} \nchar getData() const{\n    return this->letter;\n}\n```", // Also, you can dynamic set Markdown text
+                width: "100%",
+                height: "100%",
+                // htmlDecode : true,  // Enable / disable HTML tag encode.
+                // htmlDecode : "style,script,iframe",  // Note: If enabled, you should filter some dangerous HTML tags for website security.
+            });
+        });
     </script>
 </body>
 
