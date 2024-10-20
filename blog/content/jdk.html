@@ -14,6 +14,12 @@
     <link rel="stylesheet" href="../css/nprogress.css" />
     <link rel="stylesheet" href="../css/blog.css" />
     <link rel="shortcut icon" href="../image/cat.ico" />
+    <link rel="stylesheet" href="../../editor.md/css/editormd.preview.css" />
+    <style>
+        .article-md {
+            padding: 0;
+        }
+    </style>
 </head>
 
 <body>
@@ -67,39 +73,18 @@
                             </div>
                             <div class="content artiledetail"
                                 style="border-bottom: 1px solid #e1e2e0; padding-bottom: 20px;">
-                                <p>在使用vscode进行java程序编程的时候，其中插件要求使用jdk11及以上的版本。但通常许多常见的小工具、软件，其实利用jdk8的版本完成的功能。
-                                </p>
-                                <br />
-                                <h4>环境配置</h4>
-                                <p>因为电脑上原本存在jdk8，我们在环境变量中将原本配置的JAVA_HOME变量名修改为JAVA_HOME8。</p>
-                                <img src="../image/page/jdk/jdk8.png">
-                                <br />
-                                <br />
-                                <p>配置多版本jdk环境，我们需要先将jdk11的版本下载到本地。下载地址为<a
-                                        href="https://www.oracle.com/java/technologies/javase-jdk11-downloads.html">https://www.oracle.com/java/technologies/javase-jdk11-downloads.html</a>。下载完成以后新建环境变量，同时在环境变量命名时同上述jdk8一样，命名为JAVA_HOME11。
-                                </p>
-                                <img src="../image/page/jdk/jdk11.png">
-                                <br />
-                                <br />
-                                <p>新建变量完成以后，将JAVA_HOME变量的值设定为JAVA_HOME11的值。</p>
-                                <img src="../image/page/jdk/javahome.png">
-                                <br />
-                                <br />
-                                <p>其余的CLASSPATH以及Path变量中的部分则不做改动。</p>
-                                <img src="../image/page/jdk/CLASSPATH.png">
-                                <br />
-                                <br />
-                                <img src="../image/page/jdk/Path.png">
-                                <br />
-                                <br />
-                                <h4>切换变量</h4>
-                                <p>在需要变更jdk版本时，只需要在系统变量中更改JAVA_HOME的变量值即可。</p>
-                                <img src="../image/page/jdk/change.png">
-                                <br />
-                                <br />
-                                <h4>版本查看</h4>
-                                <p>检查当前使用的jdk版本可以通过打开cmd命令提示符，输入命令“java --version”即可。</p>
-                                <img src="../image/page/jdk/version.png">
+                                <div class="article-md" id="test-markdown-view">
+                                    <!-- Server-side output Markdown text -->
+                                    <textarea style="display:none;"></textarea>
+                                </div>
+                                <div class="article-md" id="display-block1">
+                                    <!-- Server-side output Markdown text -->
+                                    <textarea style="display:none;"></textarea>
+                                </div>
+                                <div class="article-md" id="display-block2">
+                                    <!-- Server-side output Markdown text -->
+                                    <textarea style="display:none;"></textarea>
+                                </div>
                                 <div class="copyright mt20">
                                     <!-- <p class="f-toe fc-black">
                                         非特殊说明，本文版权归 evoke 所有，转载请注明出处.
@@ -182,6 +167,54 @@
         window.onload = function () {
             NProgress.done();
         };
+    </script>
+    <script src="../js/jquery.min.js"></script>
+    <script src="../../editor.md/editormd.js"></script>
+    <script src="../../editor.md/lib/marked.min.js"></script>
+    <script src="../../editor.md/lib/prettify.min.js"></script>
+    <script type="text/javascript">
+        $(function () {
+            var testView = editormd.markdownToHTML("test-markdown-view", {
+                markdown: "在使用vscode进行java程序编程的时候，其中插件要求使用jdk11及以上的版本。但通常许多常见的小工具、软件，其实利用jdk8的版本完成的功能。\n\n" +
+                    "---\n\n" +
+                    "### 环境配置\n" +
+                    "因为电脑上原本存在jdk8，我们在环境变量中将原本配置的JAVA_HOME变量名修改为JAVA_HOME8。\n" +
+                    "![JAVA_HOME8](../image/page/jdk/jdk8.png \"JAVA_HOME8\")\n\n" +
+                    "配置多版本jdk环境，我们需要先将jdk11的版本下载到本地。下载地址为[Java SE Development Kit 11.0.25](https://www.oracle.com/java/technologies/javase-jdk11-downloads.html)。下载完成以后新建环境变量，同时在环境变量命名时同上述jdk8一样，命名为JAVA_HOME11。\n" +
+                    "![JAVA_HOME11](../image/page/jdk/jdk11.png \"JAVA_HOME11\")\n\n" +
+                    "新建变量完成以后，将JAVA_HOME变量的值设定为JAVA_HOME11的值。\n" +
+                    "![JAVA_HOME](../image/page/jdk/javahome.png \"JAVA_HOME\")\n\n" +
+                    "其余的CLASSPATH以及Path变量中的部分则不做改动。\n" +
+                    "```{.line-numbers}\n" +
+                    ".;%JAVA_HOME%\\lib\\dt.jar;%JAVA_HOME%\\lib\\tools.jar\n```\n" +
+                    "![CLASSPATH](../image/page/jdk/CLASSPATH.png \"CLASSPATH\")\n\n" +
+                    "![Path](../image/page/jdk/Path.png \"Path\")\n\n" +
+                    "---\n\n", // Also, you can dynamic set Markdown text
+                width: "100%",
+                height: "100%",
+                // htmlDecode : true,  // Enable / disable HTML tag encode.
+                // htmlDecode : "style,script,iframe",  // Note: If enabled, you should filter some dangerous HTML tags for website security.
+            });
+        });
+        $(function () {
+            var testView = editormd.markdownToHTML("display-block1", {
+                markdown: "### 切换变量\n" +
+                    "在需要变更jdk版本时，只需要在系统变量中更改JAVA_HOME的变量值即可。\n" +
+                    "![change_version](../image/page/jdk/change.png \"change_version\")\n\n" +
+                    "---\n\n", // Also, you can dynamic set Markdown text
+                width: "100%",
+                height: "100%"
+            });
+        });
+        $(function () {
+            var testView = editormd.markdownToHTML("display-block2", {
+                markdown: "### 版本查看\n" +
+                    "检查当前使用的jdk版本可以通过打开cmd命令提示符，输入命令\"**java --version**\"即可。\n" +
+                    "![cmd](../image/page/jdk/version.png \"cmd\")", // Also, you can dynamic set Markdown text
+                width: "100%",
+                height: "100%"
+            });
+        });
     </script>
 </body>
 
