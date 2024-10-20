@@ -6,7 +6,7 @@
     <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1" />
     <meta name="renderer" content="webkit">
     <meta name="viewport" content="width=device-width" />
-    <title>文章阅读</title>
+    <title>Win10家庭版使用gpedit.msc方法</title>
     <link rel="stylesheet" href="../font-awesome/css/font-awesome.min.css">
     <link rel="stylesheet" href="../layui/css/layui.css" />
     <link rel="stylesheet" href="../css/master.css" />
@@ -57,19 +57,19 @@
                         <input type="hidden" value="@Model.BlogTypeID" id="blogtypeid" />
                         <section class="article-item">
                             <aside class="title" style="line-height:1.5;">
-                                <h4>文章阅读</h4>
+                                <h4>Win10家庭版使用gpedit.msc方法</h4>
                                 <p class="fc-grey fs-14">
                                     <small>
                                         作者：<a href="../about.html" target="_blank" class="fc-link">evoke</a>
                                     </small>
                                     <!-- <small class="ml10">围观群众：<i class="readcount">37</i></small> -->
-                                    <small class="ml10">更新于 <label>2021-07-02:17:35:22</label> </small>
+                                    <small class="ml10">更新于 <label>2024-10-19:22:01:43</label> </small>
                                 </p>
                             </aside>
                             <div class="time mt10" style="padding-bottom:0;">
-                                <span class="day">2</span>
-                                <span class="month fs-18">7<small class="fs-14">月</small></span>
-                                <span class="year fs-18">2021</span>
+                                <span class="day">19</span>
+                                <span class="month fs-18">10<small class="fs-14">月</small></span>
+                                <span class="year fs-18">2024</span>
                             </div>
                             <div class="content artiledetail"
                                 style="border-bottom: 1px solid #e1e2e0; padding-bottom: 20px;">
@@ -83,11 +83,11 @@
                                     </p> -->
                                     <p class="f-toe">
                                         本文标题：
-                                        <a href="javascript:void(0)" class="r-title">文章阅读</a>
+                                        <a href="javascript:void(0)" class="r-title">Win10家庭版使用gpedit.msc方法</a>
                                     </p>
                                     <p class="f-toe">
                                         本文网址：
-                                        <a href="#">https://EvokeIn1037.github.io/blog/content/jdk.html</a>
+                                        <a href="#">https://EvokeIn1037.github.io/blog/content/win10-gpedit.html</a>
                                     </p>
                                 </div>
                                 <div id="aplayer" style="margin:5px 0"></div>
@@ -167,10 +167,19 @@
     <script type="text/javascript">
         $(function () {
             var testView = editormd.markdownToHTML("test-markdown-view", {
-                markdown: "```c++{.line-numbers}\n" +
-                    "int main() {\n" +
-                    "    printf(\"Hello World!\");\n" +
-                    "}\n```", // Also, you can dynamic set Markdown text
+                markdown: "Windows 10家庭版默认没有安装gpedit.msc。\n" +
+                    "### 安装方法\n" +
+                    "#### 1、建一个批处理文件gpedit.bat\n" +
+                    "gpedit.bat文件内容如下：\n" +
+                    "```cmd{.line-numbers}\n" +
+                    "@echo off\n" +
+                    "pushd \"%~dp0\"\n" +
+                    "dir /b C:\\Windows\\servicing\\Packages\\Microsoft-Windows-GroupPolicy-ClientExtensions-Package~3*.mum >List.txt\n" +
+                    "dir /b C:\\Windows\\servicing\\Packages\\Microsoft-Windows-GroupPolicy-ClientTools-Package~3*.mum >>List.txt\n" +
+                    "for /f %%i in ('findstr /i . List.txt 2^>nul') do dism /online /norestart /add-package:\"C:\\Windows\\servicing\\Packages\\%%i\"\n" +
+                    "pause\n```\n" +
+                    "#### 2、运行gpedit.bat文件\n" +
+                    "等待gpedit.msc包安装完成。", // Also, you can dynamic set Markdown text
                 width: "100%",
                 height: "100%",
                 // htmlDecode : true,  // Enable / disable HTML tag encode.
