@@ -179,7 +179,7 @@
                     "for /f %%i in ('findstr /i . List.txt 2^>nul') do dism /online /norestart /add-package:\"C:\\Windows\\servicing\\Packages\\%%i\"\n" +
                     "pause\n```\n" +
                     "#### 2、运行gpedit.bat文件\n" +
-                    "等待gpedit.msc包安装完成。", // Also, you can dynamic set Markdown text
+                    "以管理员身份运行gpedit.bat后等待gpedit.msc包安装完成。", // Also, you can dynamic set Markdown text
                 width: "100%",
                 height: "100%",
                 // htmlDecode : true,  // Enable / disable HTML tag encode.
