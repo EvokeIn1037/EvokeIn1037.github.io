@@ -167,9 +167,9 @@
     <script type="text/javascript">
         $(function () {
             var testView = editormd.markdownToHTML("test-markdown-view", {
-                markdown: "\n```c++{.line-numbers} \n" +
-                    "char getData() const{\n" +
-                    "    return this->letter;\n" +
+                markdown: "```c++{.line-numbers}\n" +
+                    "int main() {\n" +
+                    "    printf(\"Hello World!\");\n" +
                     "}\n```", // Also, you can dynamic set Markdown text
                 width: "100%",
                 height: "100%",
