@@ -14,6 +14,12 @@
     <link rel="stylesheet" href="../css/nprogress.css" />
     <link rel="stylesheet" href="../css/blog.css" />
     <link rel="shortcut icon" href="../image/cat.ico" />
+    <link rel="stylesheet" href="../../editor.md/css/editormd.preview.css" />
+    <style>
+        .article-md {
+            padding: 0;
+        }
+    </style>
 </head>
 
 <body>
@@ -51,7 +57,7 @@
                         <input type="hidden" value="@Model.BlogTypeID" id="blogtypeid" />
                         <section class="article-item">
                             <aside class="title" style="line-height:1.5;">
-                                <h4>多个版本jdk配置环境变量</h4>
+                                <h4>文章阅读</h4>
                                 <p class="fc-grey fs-14">
                                     <small>
                                         作者：<a href="../about.html" target="_blank" class="fc-link">evoke</a>
@@ -67,14 +73,17 @@
                             </div>
                             <div class="content artiledetail"
                                 style="border-bottom: 1px solid #e1e2e0; padding-bottom: 20px;">
-                                内容自定义
+                                <div class="article-md" id="test-markdown-view">
+                                    <!-- Server-side output Markdown text -->
+                                    <textarea style="display:none;"></textarea>
+                                </div>
                                 <div class="copyright mt20">
                                     <!-- <p class="f-toe fc-black">
                                         非特殊说明，本文版权归 evoke 所有，转载请注明出处.
                                     </p> -->
                                     <p class="f-toe">
                                         本文标题：
-                                        <a href="javascript:void(0)" class="r-title">多个版本jdk配置环境变量</a>
+                                        <a href="javascript:void(0)" class="r-title">文章阅读</a>
                                     </p>
                                     <p class="f-toe">
                                         本文网址：
@@ -150,6 +159,24 @@
         window.onload = function () {
             NProgress.done();
         };
+    </script>
+    <script src="../js/jquery.min.js"></script>
+    <script src="../../editor.md/editormd.js"></script>
+    <script src="../../editor.md/lib/marked.min.js"></script>
+    <script src="../../editor.md/lib/prettify.min.js"></script>
+    <script type="text/javascript">
+        $(function () {
+            var testView = editormd.markdownToHTML("test-markdown-view", {
+                markdown: "\n```c++{.line-numbers} \n" +
+                    "char getData() const{\n" +
+                    "    return this->letter;\n" +
+                    "}\n```", // Also, you can dynamic set Markdown text
+                width: "100%",
+                height: "100%",
+                // htmlDecode : true,  // Enable / disable HTML tag encode.
+                // htmlDecode : "style,script,iframe",  // Note: If enabled, you should filter some dangerous HTML tags for website security.
+            });
+        });
     </script>
 </body>
 
