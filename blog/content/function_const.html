@@ -16,7 +16,7 @@
     <link rel="shortcut icon" href="../image/cat.ico" />
     <link rel="stylesheet" href="../../editor.md/css/editormd.preview.css" />
     <style>
-        #test-markdown-view {
+        .article-md {
             padding: 0;
         }
     </style>
@@ -73,24 +73,6 @@
                             </div>
                             <div class="content artiledetail"
                                 style="border-bottom: 1px solid #e1e2e0; padding-bottom: 20px;">
-                                <p>
-                                    在定义类中的成员变量、成员函数时，有些成员数据从头至尾都不会改变，对于某些读取对象数据的成员函数而言，为提高其可靠性，要将其设置为“只读”函数。
-                                    <b>这部分被定义成const的成员函数，一旦企图修改数据成员的值，则编译器按错误处理。</b>
-                                </p>
-                                <br />
-                                <p>
-                                    其中要注意：非静态成员函数后面加const，在非成员函数或者静态函数后加const会报错；
-                                    表示成员函数隐含传入的this指针为const指针，决定了在该成员函数中，任意修改它所在的类的成员的操作都是不允许的（因为隐含了对this指针的const引用）；
-                                    <b>唯一的例外是对于mutable修饰的成员。加了const的成员函数可以被非const对象和const对象调用，但不加const的成员函数只能被非const对象调用</b>。
-                                </p>
-                                <br />
-                                <p>
-                                    总结而言，成员函数后面加const表示函数不可以修改class的成员。
-                                </p>
-                                <br />
-                                <p>
-                                    示例如下，只读函数。
-                                </p>
                                 <div id="test-markdown-view">
                                     <!-- Server-side output Markdown text -->
                                     <textarea style="display:none;"></textarea>
@@ -185,7 +167,13 @@
     <script type="text/javascript">
         $(function () {
             var testView = editormd.markdownToHTML("test-markdown-view", {
-                markdown: "\n```c++{.line-numbers} \n" +
+                markdown: "在定义类中的成员变量、成员函数时，有些成员数据从头至尾都不会改变，对于某些读取对象数据的成员函数而言，为提高其可靠性，要将其设置为“只读”函数。" +
+                    "**这部分被定义成const的成员函数，一旦企图修改数据成员的值，则编译器按错误处理**。\n\n\n" +
+                    "其中要注意：非静态成员函数后面加const，在非成员函数或者静态函数后加const会报错；表示成员函数隐含传入的this指针为const指针，决定了在该成员函数中，任意修改它所在的类的成员的操作都是不允许的（因为隐含了对this指针的const引用）；" +
+                    "**唯一的例外是对于mutable修饰的成员。加了const的成员函数可以被非const对象和const对象调用，但不加const的成员函数只能被非const对象调用**。\n\n\n" +
+                    "总结而言，成员函数后面加const表示函数不可以修改class的成员。\n\n\n" +
+                    "示例如下，只读函数。\n" +
+                    "```c++{.line-numbers} \n" +
                     "char getData() const{\n" +
                     "    return this->letter;\n" +
                     "}\n```", // Also, you can dynamic set Markdown text
